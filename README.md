@@ -4,7 +4,7 @@ TSNLogger iOS logging utility class.
 
 Using TSNLogger
 ---------------
-Simply add TSNLogger to your podfile.
+Add TSNLogger to your podfile.
 ```
 pod 'TSNLogger'
 ```
@@ -22,7 +22,7 @@ To display log entries, use the:
                       backgroundColor:(UIColor *)backgroundColor
                       foregroundColor:(UIColor *)foregroundColor
 ```
-method to create and display the logger view in your application. This view can be made any convenient size and placed in any container view. Once created, it will display all the accumulated log entries at the moment it was created and new log entries as they are written from then on.
+method to create and display the logger view in your application. This view can be made any convenient size and placed in any container view. Once created and added to a container view, it will display the accumulated log entries at the moment it was created and new log entries as they are written.
 Usage Examples
 --------------
 Writing to TSNLogger:
