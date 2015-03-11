@@ -62,7 +62,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
     // shows through to the web view, which has the background color.
     [self setOpaque:NO];
     [self setBackgroundColor:[UIColor clearColor]];
-    [self view setAutoresizesSubviews:YES];
+    [self setAutoresizesSubviews:YES];
     [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     
     // Get the foreground RGBA.
