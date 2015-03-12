@@ -110,7 +110,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
                            }\
                            </script>\
                            </head>\
-                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word;\">",
+                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word; -webkit-text-size-adjust: none;\">",
                            foregroundValR,
                            foregroundValG,
                            foregroundValB,
