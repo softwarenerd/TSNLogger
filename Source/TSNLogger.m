@@ -1,9 +1,27 @@
 //
-//  TSNLogger.m
-//  softwarenerd.org
+//  The MIT License (MIT)
 //
-//  Created by Brian Lambert on 3/8/15.
-//  Copyright (c) 2015 Softwarenerd. All rights reserved.
+//  Copyright (c) 2015 Brian Lambert.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+//  TSNLogger.m
 //
 
 #import <pthread.h>
@@ -58,10 +76,9 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
         return nil;
     }
     
-    // Initialize. Make the containing view clear so that anything below it
-    // shows through to the web view, which has the background color.
+    // Initialize.
     [self setOpaque:NO];
-    [self setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:backgroundColor];
     [self setAutoresizesSubviews:YES];
     [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     
@@ -79,8 +96,8 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
     // Allocate, initialize, and add the web view.
     _webView = [[UIWebView alloc] initWithFrame:[self bounds]];
     [_webView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    [_webView setOpaque:CGColorGetAlpha([backgroundColor CGColor]) == 1.0];
-    [_webView setBackgroundColor:backgroundColor];
+    [_webView setOpaque:NO];
+    [_webView setBackgroundColor:[UIColor clearColor]];
     [_webView setDelegate:(id<UIWebViewDelegate>)self];
     [_webView setDataDetectorTypes:UIDataDetectorTypeNone];
     [self addSubview:_webView];
