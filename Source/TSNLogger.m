@@ -96,6 +96,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
     // Allocate, initialize, and add the web view.
     _webView = [[UIWebView alloc] initWithFrame:[self bounds]];
     [_webView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [_webView setScalesPageToFit:YES];
     [_webView setOpaque:NO];
     [_webView setBackgroundColor:[UIColor clearColor]];
     [_webView setDelegate:(id<UIWebViewDelegate>)self];
@@ -111,8 +112,10 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
     [logHTML appendString:[NSString stringWithFormat:@"\
                            <html>\
                            <head>\
+                           <meta name=\"viewport\" content=\"width=device-width; minimum-scale=0.5; maximum-scale=0.8; user-scalable=no\">\
                            <script>\
                            function addLogEntry(logEntry, maxEntries) {\
+                               var wasScrolledBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;\
                                var logEntries = document.getElementsByClassName('logEntry');\
                                if (logEntries.length >= maxEntries) {\
                                    for (i = 0; i < logEntries.length - maxEntries; i++) {\
@@ -123,11 +126,15 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
                                logEntryDiv.className = 'logEntry';\
                                logEntryDiv.innerHTML = logEntry;\
                                document.body.appendChild(logEntryDiv);\
-                               window.scrollTo(0, document.body.scrollHeight);\
+                               if (wasScrolledBottom) {\
+                                   window.scrollTo(0, document.body.scrollHeight);\
+                               }\
                            }\
                            </script>\
                            </head>\
-                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word; -webkit-text-size-adjust: none;\">",
+                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word; -webkit-text-size-adjust: none;\">\
+                           </body>\
+                           </html>",
                            foregroundValR,
                            foregroundValG,
                            foregroundValB,

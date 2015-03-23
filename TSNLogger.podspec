@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   spec.name             = 'TSNLogger'
-  spec.version          = '1.2.3'
+  spec.version          = '1.2.4'
   spec.license          = { :type => 'MIT' }
   spec.homepage         = 'https://github.com/softwarenerd/TSNLogger'
   spec.author           = { 'Brian Lambert' => 'brianlambert@softwarenerd.org' }
   spec.summary          = 'iOS logging utility.'
-  spec.source           = { :git => 'https://github.com/softwarenerd/TSNLogger.git', :tag => 'v1.2.3' }
+  spec.source           = { :git => 'https://github.com/softwarenerd/TSNLogger.git', :tag => 'v1.2.4' }
   spec.source_files     = 'Source/*'
   spec.platform         = :ios, '7.0'
   spec.framework        = 'UIKit'
