@@ -24,7 +24,7 @@
 //  TSNLogger.m
 //
 
-#import <TSNThreading.h>
+#import <pthread.h>
 #import "TSNLogger.h"
 
 // The TSNLogger new log entry notification name.
@@ -239,7 +239,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
 // Adds a log entry.
 - (void)addLogEntry:(NSString *)logEntry
 {
-    OnMainThread(^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableString * logEntryString = [NSMutableString stringWithString:logEntry];
         [logEntryString replaceOccurrencesOfString:@"\n" withString:@"<br/>" options:0 range:NSMakeRange(0, [logEntryString length])];
         [logEntryString replaceOccurrencesOfString:@" " withString:@"&nbsp;" options:0 range:NSMakeRange(0, [logEntryString length])];
