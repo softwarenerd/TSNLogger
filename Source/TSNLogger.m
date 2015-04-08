@@ -117,7 +117,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
                            function addLogEntry(logEntry, maxEntries) {\
                                var wasScrolledBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;\
                                var logEntries = document.getElementsByClassName('logEntry');\
-                               if (logEntries.length >= maxEntries) {\
+                               if (logEntries && logEntries.length >= maxEntries) {\
                                    for (i = 0; i < logEntries.length - maxEntries; i++) {\
                                        document.body.removeChild(logEntries[i]);\
                                    }\
@@ -132,9 +132,7 @@ NSString * const TSNLoggerNewLogEntryNotificationName = @"org.softwarenerd.newlo
                            }\
                            </script>\
                            </head>\
-                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word; -webkit-text-size-adjust: none;\">\
-                           </body>\
-                           </html>",
+                           <body style=\"color: rgba(%u, %u, %u, %u); font-family: Menlo-Regular; font-size: 8pt; word-wrap: break-word; -webkit-text-size-adjust: none;\">",
                            foregroundValR,
                            foregroundValG,
                            foregroundValB,
